@@ -43,7 +43,7 @@ def equipements_afficher(order_by, id_equipements_sel):
                     # donc, je précise les champs à afficher
                     # Constitution d'un dictionnaire pour associer l'id du genre sélectionné avec un nom de variable
                     valeur_id_equipements_selected_dictionnaire = {"value_id_equipements_selected": id_equipements_sel}
-                    strsql_equipements_afficher = """SELECT * FROM t_equipements"""
+                    strsql_equipements_afficher = """SELECT * FROM t_equipements where id_equipements =%(value_id_equipements_selected)s"""
 
                     mc_afficher.execute(strsql_equipements_afficher, valeur_id_equipements_selected_dictionnaire)
                 else:
@@ -72,7 +72,7 @@ def equipements_afficher(order_by, id_equipements_sel):
                                           f"{Exception_equipements_afficher}")
 
     # Envoie la page "HTML" au serveur.
-    return render_template("equipements_afficher.html", data=data_equipements)
+    return render_template("equipements/equipements_afficher.html", data=data_equipements)
 
 
 """
@@ -95,7 +95,7 @@ def equipements_afficher(order_by, id_equipements_sel):
 """
 
 
-@app.route("equipements_ajouter", methods=['GET', 'POST'])
+@app.route("/equipements_ajouter", methods=['GET', 'POST'])
 def equipements_ajouter_wtf():
     form = FormWTFAjouterGenres()
     if request.method == "POST":
@@ -144,7 +144,7 @@ def equipements_ajouter_wtf():
 """
 
 
-@app.route("equipements_update", methods=['GET', 'POST'])
+@app.route("/equipements_update", methods=['GET', 'POST'])
 def equipements_update_wtf():
     # L'utilisateur vient de cliquer sur le bouton "EDIT". Récupère la valeur de "id_genre"
     id_equipements_update = request.values['id_equipements_btn_edit_html']
@@ -217,7 +217,7 @@ def equipements_update_wtf():
 """
 
 
-@app.route("equipements_delete", methods=['GET', 'POST'])
+@app.route("/equipements_delete", methods=['GET', 'POST'])
 def equipements_delete_wtf():
     data_films_attribue_equipements_delete = None
     btn_submit_del = None
