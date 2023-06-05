@@ -72,7 +72,7 @@ def equipements_afficher(order_by, id_equipements_sel):
                                           f"{Exception_equipements_afficher}")
 
     # Envoie la page "HTML" au serveur.
-    return render_template("equipements/equipements_afficher.html", data=data_equipements)
+    return render_template("/equipements/equipements_afficher.html", data=data_equipements)
 
 
 """
@@ -97,7 +97,7 @@ def equipements_afficher(order_by, id_equipements_sel):
 
 @app.route("/equipements_ajouter", methods=['GET', 'POST'])
 def equipements_ajouter_wtf():
-    form = FormWTFAjouterGenres()
+    form = FormWTFAjouterequipements()
     if request.method == "POST":
         try:
             if form.validate_on_submit():

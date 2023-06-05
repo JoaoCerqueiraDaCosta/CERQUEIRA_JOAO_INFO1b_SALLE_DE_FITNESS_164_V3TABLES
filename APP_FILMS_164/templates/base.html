@@ -49,7 +49,7 @@
 						</a>
 						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 							<li><a class="nav-link" href="{{ url_for('genres_afficher', order_by='ASC', id_genre_sel=0) }}">Coachs</a></li>
-							<li><a class="nav-link" href="{{ url_for('genres_afficher', order_by='ASC', id_genre_sel=0) }}">Coachs privés</a></li>
+							<li><a class="nav-link" href="{{ url_for('membres_avoir_coach_afficher', order_by='ASC', id_membres_avoir_coach_sel=0) }}">Coachs privés</a></li>
 						</ul>
 					</li>
 					<li><a class="nav-link" href="{{ url_for('films_genres_afficher', id_film_sel=0) }}">Membres</a>
