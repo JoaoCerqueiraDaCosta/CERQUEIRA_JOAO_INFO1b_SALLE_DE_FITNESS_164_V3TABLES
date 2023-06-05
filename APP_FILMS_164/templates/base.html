@@ -3,27 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>{% block title %}Mon beau projet{% endblock %}</title>
+	<title>{% block title %}Projet Fitness{% endblock %}</title>
 
-	<!-- Bootstrap CSS en local -->
-	<!-- OM 2020.05.04 OM JE PREFERE GARDER MES FICHIERS CSS ET JS DANS UN REPERTOIRE "EN LOCAL"
-        SINON ON EST TOUJOURS DEPENDANT D'UNE LIAISON A L'INTERNET. -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="{{ url_for('static', filename='js/jquery.slim.min.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
 	<script src="{{ url_for('static', filename='bootstrap-5.0.0-beta2-dist/js/bootstrap.min.js') }}"></script>
 
-	<!-- Stylesheets en local -->
-	<!-- https://bootswatch.com/solar/-->
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootswatch-4/solar/bootstrap.min.css') }}">
-	<!-- https://bootswatch.com/darkly/ -->
-<!--	 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootswatch-4/darkly/bootstrap.min.css') }}">-->
-	<!--	https://bootswatch.com/cyborg/-->
-<!--	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootswatch-4/cyborg/bootstrap.min.css') }}">-->
-	<!-- https://bootswatch.com/superhero/ -->
-<!--	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootswatch-4/superhero/bootstrap.min.css') }}">-->
-	<!-- https://flask.palletsprojects.com/en/1.1.x/patterns/favicon/ -->
 	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+	<style>
+		.img{background-position: center;background-size: cover;height:100%; min-height: 100%;background-position: center;background-repeat: no-repeat;background-attachment: fixed;}
+		.img1{background-image: url("https://i0.wp.com/cdn.luxe.net/wp-content/uploads/2017/01/02235928/American-Copper-Gym-Luxe.jpg?ssl=1");}
+		.img2{background-image: url("https://images.midilibre.fr/api/v1/images/view/5eb64afd3e45466e393d2d23/large/image.jpg?v=1");}
+
+		.textabout{margin:5%;text-align: center;}
+		.text {color: white;font-size: 20px;position: absolute;top: 50%;left: 50%;-webkit-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);text-align: center;}
+		.middle {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);text-align: center;font-size: clamp(3rem, 4vw, 7rem);color: white;}
+		.middle2 {position: absolute;top: 165%;left: 50%;transform: translate(-50%, -50%);text-align: center;font-size: clamp(3rem, 4vw, 7rem);color: white;}
+
+	</style>
 
 	{% block head %}
 	{% endblock %}
@@ -38,7 +37,7 @@
 <div class="container">
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-secondary">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="{{ url_for('mapageprincipale') }}">FitForm</a>
+			<a class="navbar-brand" href="{{ url_for('mapageprincipale') }}">FitForm</a >
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -58,23 +57,6 @@
 					<li class="nav-item">
 						<a class="nav-link" href="{{ url_for('personnes_taille_dict') }}">Equipements</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('personnes_taille_dict') }}">Démo "TAILLE"</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('route_hommage_a_u_x_V_ictim_es_du_monstre_du_mod_1_6_4') }}">Route "essai"</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Autres démos
-						</a>
-						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-							<li><a class="dropdown-item" href="{{ url_for('index') }}">Démo index (sans template)</a></li>
-							<li><a class="dropdown-item" href="404.html">404</a></li>
-							<li><a class="dropdown-item" href="{{ url_for('mon_premier_wtform') }}">Essai form</a></li>
-							<li><a class="dropdown-item" href="{{ url_for('demo_select_wtf') }}">Essai DROPDOWN</a></li>
-						</ul>
-					</li>
 				</ul>
 			</div>
 		</div>
@@ -88,6 +70,5 @@
 {% block javascript %}
 
 {% endblock %}
-{% include 'footer.html' %}
 </body>
 </html>

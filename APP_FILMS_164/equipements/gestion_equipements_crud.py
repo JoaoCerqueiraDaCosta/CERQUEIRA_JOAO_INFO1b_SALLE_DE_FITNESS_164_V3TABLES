@@ -12,19 +12,19 @@ from flask import url_for
 from APP_FILMS_164 import app
 from APP_FILMS_164.database.database_tools import DBconnection
 from APP_FILMS_164.erreurs.exceptions import *
-from APP_FILMS_164.equipements.gestion_equipements_wtf_forms import FormWTFAjouterGenres
-from APP_FILMS_164.equipements.gestion_equipements_wtf_forms import FormWTFDeleteGenre
-from APP_FILMS_164.equipements.gestion_equipements_wtf_forms import FormWTFUpdateGenre
+from APP_FILMS_164.equipements.gestion_equipements_wtf_forms import FormWTFAjouterequipements
+from APP_FILMS_164.equipements.gestion_equipements_wtf_forms import FormWTFDeleteequipements
+from APP_FILMS_164.equipements.gestion_equipements_wtf_forms import FormWTFUpdateequipements
 
 """
     Auteur : OM 2021.03.16
-    Définition d'une "route" /genres_afficher
+    Définition d'une "route" /equipements_afficher
     
-    Test : ex : http://127.0.0.1:5575/genres_afficher
+    Test : ex : http://127.0.0.1:5575/equipements_afficher
     
     Paramètres : order_by : ASC : Ascendant, DESC : Descendant
-                id_genre_sel = 0 >> tous les genres.
-                id_genre_sel = "n" affiche le genre dont l'id est "n"
+                id_equipements_sel = 0 >> tous les equipements.
+                id_equipements_sel = "n" affiche le equipements dont l'id est "n"
 """
 
 
