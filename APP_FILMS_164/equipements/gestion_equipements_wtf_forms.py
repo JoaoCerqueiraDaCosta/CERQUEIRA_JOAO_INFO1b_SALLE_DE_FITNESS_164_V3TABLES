@@ -16,14 +16,14 @@ class FormWTFAjouterequipements(FlaskForm):
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
     nom_equipements_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
-    nom_equipements_wtf = StringField("Clavioter le equipements ", validators=[Length(min=2, max=20, message="min 2 max 20"),
+    nom_equipements_wtf = StringField("Insérer l equipement ", validators=[Length(min=2, max=20, message="min 2 max 20"),
                                                                    Regexp(nom_equipements_regexp,
                                                                           message="Pas de chiffres, de caractères "
                                                                                   "spéciaux, "
                                                                                   "d'espace à double, de double "
                                                                                   "apostrophe, de double trait union")
                                                                    ])
-    submit = SubmitField("Enregistrer equipements")
+    submit = SubmitField("Enregistrer l equipement")
 
 
 class FormWTFUpdateequipements(FlaskForm):
@@ -32,7 +32,7 @@ class FormWTFUpdateequipements(FlaskForm):
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
     nom_equipements_update_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
-    nom_equipements_update_wtf = StringField("Clavioter le equipements ", validators=[Length(min=2, max=20, message="min 2 max 20"),
+    nom_equipements_update_wtf = StringField("Insérer l equipements ", validators=[Length(min=2, max=20, message="min 2 max 20"),
                                                                           Regexp(nom_equipements_update_regexp,
                                                                                  message="Pas de chiffres, de "
                                                                                          "caractères "
@@ -43,7 +43,7 @@ class FormWTFUpdateequipements(FlaskForm):
                                                                           ])
     date_equipements_wtf_essai = DateField("Essai date", validators=[InputRequired("Date obligatoire"),
                                                                DataRequired("Date non valide")])
-    submit = SubmitField("Update equipements")
+    submit = SubmitField("Update l equipements")
 
 
 class FormWTFDeleteequipements(FlaskForm):
@@ -55,7 +55,7 @@ class FormWTFDeleteequipements(FlaskForm):
         submit_btn_conf_del : Bouton de confirmation pour effacer un "genre".
         submit_btn_annuler : Bouton qui permet d'afficher la table "t_genre".
     """
-    nom_equipements_delete_wtf = StringField("Effacer ce equipements")
-    submit_btn_del = SubmitField("Effacer equipements")
+    nom_equipements_delete_wtf = StringField("Effacer cet equipement")
+    submit_btn_del = SubmitField("Effacer cet equipements")
     submit_btn_conf_del = SubmitField("Etes-vous sur d'effacer ?")
     submit_btn_annuler = SubmitField("Annuler")

@@ -92,7 +92,7 @@ INNER JOIN t_membres ON t_membres.id_membres = t_membres_avoir_coach.fk_membres"
 
 @app.route("/membres_avoir_coach_ajouter", methods=['GET', 'POST'])
 def membres_avoir_coach_ajouter_wtf():
-    form = FormWTFAjoutermembres_avoir_coach()
+    form = FormWTFAjouterGenres()
     if request.method == "POST":
         try:
             if form.validate_on_submit():
@@ -112,7 +112,7 @@ def membres_avoir_coach_ajouter_wtf():
                 return redirect(url_for('membres_avoir_coach_afficher', order_by='DESC', id_membres_avoir_coach_sel=0))
 
         except Exception as Exception_membres_avoir_coach_ajouter_wtf:
-            raise Exceptionmembres_avoir_coachAjouterWtf(f"fichier : {Path(__file__).name}  ;  "
+            raise ExceptionGenresAjouterWtf(f"fichier : {Path(__file__).name}  ;  "
                                             f"{membres_avoir_coach_ajouter_wtf.__name__} ; "
                                             f"{Exception_membres_avoir_coach_ajouter_wtf}")
 
