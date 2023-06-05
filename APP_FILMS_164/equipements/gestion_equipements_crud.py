@@ -55,17 +55,6 @@ def equipements_afficher(order_by, id_equipements_sel):
 
                 print("data_equipements ", data_equipements, " Type : ", type(data_equipements))
 
-                # Différencier les messages si la table est vide.
-                if not data_equipements and id_equipements_sel == 0:
-                    flash("""La table "t_equipements" est vide. !!""", "warning")
-                elif not data_equipements and id_equipements_sel > 0:
-                    # Si l'utilisateur change l'id_genre dans l'URL et que le genre n'existe pas,
-                    flash(f"Le equipements demandé n'existe pas !!", "warning")
-                else:
-                    # Dans tous les autres cas, c'est que la table "t_genre" est vide.
-                    # OM 2020.04.09 La ligne ci-dessous permet de donner un sentiment rassurant aux utilisateurs.
-                    flash(f"Données equipements affichés !!", "success")
-
         except Exception as Exception_equipements_afficher:
             raise ExceptionGenresAfficher(f"fichier : {Path(__file__).name}  ;  "
                                           f"{equipements_afficher.__name__} ; "

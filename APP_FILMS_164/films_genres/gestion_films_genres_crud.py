@@ -50,15 +50,6 @@ def films_genres_afficher(id_film_sel):
                 data_genres_films_afficher = mc_afficher.fetchall()
                 print("data_genres ", data_genres_films_afficher, " Type : ", type(data_genres_films_afficher))
 
-                # Différencier les messages.
-                if not data_genres_films_afficher and id_film_sel == 0:
-                    flash("""La table "t_film" est vide. !""", "warning")
-                elif not data_genres_films_afficher and id_film_sel > 0:
-                    # Si l'utilisateur change l'id_film dans l'URL et qu'il ne correspond à aucun film
-                    flash(f"Le film {id_film_sel} demandé n'existe pas !!", "warning")
-                else:
-                    flash(f"Données films et genres affichés !!", "success")
-
         except Exception as Exception_films_genres_afficher:
             raise ExceptionFilmsGenresAfficher(f"fichier : {Path(__file__).name}  ;  {films_genres_afficher.__name__} ;"
                                                f"{Exception_films_genres_afficher}")

@@ -61,17 +61,6 @@ INNER JOIN t_membres ON t_membres.id_membres = t_membres_avoir_coach.fk_membres"
 
                 print("data_membres_avoir_coach ", data_membres_avoir_coach, " Type : ", type(data_membres_avoir_coach))
 
-                # Différencier les messages si la table est vide.
-                if not data_membres_avoir_coach and id_membres_avoir_coach_sel == 0:
-                    flash("""La table "t_membres_avoir_coach" est vide. !!""", "warning")
-                elif not data_membres_avoir_coach and id_membres_avoir_coach_sel > 0:
-                    # Si l'utilisateur change l'id_membres_avoir_coach dans l'URL et que le membres_avoir_coach n'existe pas,
-                    flash(f"Le membres_avoir_coach demandé n'existe pas !!", "warning")
-                else:
-                    # Dans tous les autres cas, c'est que la table "t_membres_avoir_coach" est vide.
-                    # OM 2020.04.09 La ligne ci-dessous permet de donner un sentiment rassurant aux utilisateurs.
-                    flash(f"Données membres_avoir_coach affichés !!", "success")
-
         except Exception as Exception_membres_avoir_coach_afficher:
             raise Exception_membres_avoir_coach_afficher(f"fichier : {Path(__file__).name}  ;  "
                                           f"{membres_avoir_coach_afficher.__name__} ; "
