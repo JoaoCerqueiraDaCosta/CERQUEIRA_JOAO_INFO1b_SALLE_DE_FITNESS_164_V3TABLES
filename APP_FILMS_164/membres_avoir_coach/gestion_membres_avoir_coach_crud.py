@@ -34,7 +34,9 @@ def membres_avoir_coach_afficher(order_by, id_membres_avoir_coach_sel):
         try:
             with DBconnection() as mc_afficher:
                 if order_by == "ASC" and id_membres_avoir_coach_sel == 0:
-                    strsql_membres_avoir_coach_afficher = """SELECT * FROM t_membres_avoir_coach"""
+                    strsql_membres_avoir_coach_afficher = """SELECT ID_membres_avoir_coach, t_membres.prenom AS prenom_membres, t_membres.nom AS nom_membres, t_coach.prenom AS prenom_coach, t_coach.nom AS nom_coach FROM t_membres_avoir_coach
+INNER JOIN t_coach ON t_coach.ID_coach = t_membres_avoir_coach.fk_coach
+INNER JOIN t_membres ON t_membres.id_membres = t_membres_avoir_coach.fk_membres"""
                     mc_afficher.execute(strsql_membres_avoir_coach_afficher)
                 elif order_by == "ASC":
                     # C'EST LA QUE VOUS ALLEZ DEVOIR PLACER VOTRE PROPRE LOGIQUE MySql
@@ -43,11 +45,15 @@ def membres_avoir_coach_afficher(order_by, id_membres_avoir_coach_sel):
                     # donc, je précise les champs à afficher
                     # Constitution d'un dictionnaire pour associer l'id du membres_avoir_coach sélectionné avec un nom de variable
                     valeur_id_membres_avoir_coach_selected_dictionnaire = {"value_id_membres_avoir_coach_selected": id_membres_avoir_coach_sel}
-                    strsql_membres_avoir_coach_afficher = """SELECT * FROM t_membres_avoir_coach where id_membres_avoir_coach =%(value_id_membres_avoir_coach_selected)s"""
+                    strsql_membres_avoir_coach_afficher = """SELECT ID_membres_avoir_coach, t_membres.prenom AS prenom_membres, t_membres.nom AS nom_membres, t_coach.prenom AS prenom_coach, t_coach.nom AS nom_coach FROM t_membres_avoir_coach
+INNER JOIN t_coach ON t_coach.ID_coach = t_membres_avoir_coach.fk_coach
+INNER JOIN t_membres ON t_membres.id_membres = t_membres_avoir_coach.fk_membres where id_membres_avoir_coach =%(value_id_membres_avoir_coach_selected)s"""
 
                     mc_afficher.execute(strsql_membres_avoir_coach_afficher, valeur_id_membres_avoir_coach_selected_dictionnaire)
                 else:
-                    strsql_membres_avoir_coach_afficher = """SELECT * FROM t_membres_avoir_coach"""
+                    strsql_membres_avoir_coach_afficher = """SELECT ID_membres_avoir_coach, t_membres.prenom AS prenom_membres, t_membres.nom AS nom_membres, t_coach.prenom AS prenom_coach, t_coach.nom AS nom_coach FROM t_membres_avoir_coach
+INNER JOIN t_coach ON t_coach.ID_coach = t_membres_avoir_coach.fk_coach
+INNER JOIN t_membres ON t_membres.id_membres = t_membres_avoir_coach.fk_membres"""
 
                     mc_afficher.execute(strsql_membres_avoir_coach_afficher)
 

@@ -12,10 +12,10 @@
                             ID_membres_avoir_coach
                         </th>
                         <th class="align-middle">
-                            membres
+                            Membres
                         </th>
-                        <th class="align-middle">
-							coach
+						<th class="align-middle">
+                            Coachs
                         </th>
                     </tr>
                 </thead>
@@ -28,10 +28,10 @@
 							{{ row.ID_membres_avoir_coach }}
 						</td>
 						<td class="align-middle">
-							{{ row.fk_membres }}
+							{{ row.prenom_membres }} {{ row.nom_membres }}
 						</td>
 						<td class="align-middle">
-							{{ row.fk_coach }}
+							{{ row.prenom_coach }} {{ row.nom_coach }}
 						</td>
 						<td class="text-center" class="align-middle">
 							<a class="btn btn-primary" href="{{ url_for('membres_avoir_coach_ajouter_wtf') }}" role="button">Ajouter</a>
