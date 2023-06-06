@@ -96,12 +96,14 @@ def membres_avoir_coach_ajouter_wtf():
     if request.method == "POST":
         try:
             if form.validate_on_submit():
-                name_membres_avoir_coach_wtf = form.nom_membres_avoir_coach_wtf.data
-                name_membres_avoir_coach = name_membres_avoir_coach_wtf.lower()
-                valeurs_insertion_dictionnaire = {"value_intitule_membres_avoir_coach": name_membres_avoir_coach}
+                FK_membres = form.FK_membres.data
+                FK_coach = form.FK_coach.data
+
+
+                valeurs_insertion_dictionnaire = {"FK_membres": FK_membres, "FK_coach": FK_coach}
                 print("valeurs_insertion_dictionnaire ", valeurs_insertion_dictionnaire)
 
-                strsql_insert_membres_avoir_coach = """INSERT INTO t_membres_avoir_coach (id_membres_avoir_coach,intitule_membres_avoir_coach) VALUES (NULL,%(value_intitule_membres_avoir_coach)s) """
+                strsql_insert_membres_avoir_coach = """INSERT INTO t_membres_avoir_coach (FK_membres, FK_coach) VALUES (%(FK_coach)s, %(FK_coach)s)"""
                 with DBconnection() as mconn_bd:
                     mconn_bd.execute(strsql_insert_membres_avoir_coach, valeurs_insertion_dictionnaire)
 

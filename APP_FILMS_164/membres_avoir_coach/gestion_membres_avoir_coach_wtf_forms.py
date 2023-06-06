@@ -16,8 +16,8 @@ class FormWTFAjoutermembres_avoir_coach(FlaskForm):
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
     nom_genre_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
-    FK_membres = StringField ("Prénom et Nom", validators= [DataRequired(message="Veuillez entrez le Prénom et le Nom")])
-    FK_coach = StringField ("Prénom et Nom", validators= [DataRequired(message="Veuillez entrez le Prénom et le Nom")])
+    FK_membres = StringField ("Prénom et Nom du Membre", validators= [DataRequired(message="Veuillez entrer le Prénom et le Nom du Membre")])
+    FK_coach = StringField ("Prénom et Nom du Coach", validators= [DataRequired(message="Veuillez entrer le Prénom et le Nom du Coach")])
 
     submit = SubmitField("Enregistrer le membre et le coach")
 

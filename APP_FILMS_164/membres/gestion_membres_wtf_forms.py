@@ -16,15 +16,15 @@ class FormWTFAjoutermembres(FlaskForm):
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
     nom_equipements_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
-    prenom_membres = StringField ("Prénom", validators= [DataRequired(message="Veuillez entrez le Prénom")])
-    nom_membres = StringField ("Nom", validators= [DataRequired(message="Veuillez entrez le Nom")])
-    date_naissance_membres = DateField ("Date de Naissance", validators= [DataRequired(message="Veuillez entrez une date")])
-    email_membres = StringField ("Email", validators= [DataRequired(message="Veuillez entrez l'email")])
-    telephone_membres = StringField ("Téléphone", validators= [DataRequired(message="Veuillez entrez le numéro de téléphone")])
-    date_inscription_membres = DateField ("Date d'inscription", validators= [DataRequired(message="Veuillez entrez la date d'inscription")])
-    actif_membres = StringField ("Actif", validators= [DataRequired(message="Veuillez entrez si le membres est actif")])
+    prenom_membres = StringField ("Prénom", validators= [DataRequired(message="Veuillez entrer le Prénom")])
+    nom_membres = StringField ("Nom", validators= [DataRequired(message="Veuillez entrer le Nom")])
+    date_naissance_membres = DateField ("Date de Naissance", validators= [DataRequired(message="Veuillez entrer une date")])
+    email_membres = StringField ("Email", validators= [DataRequired(message="Veuillez entrer l'email")])
+    telephone_membres = StringField ("Téléphone", validators= [DataRequired(message="Veuillez entrer le numéro de téléphone")])
+    date_inscription_membres = DateField ("Date d'inscription", validators= [DataRequired(message="Veuiller entrez la date d'inscription")])
+    actif_membres = StringField ("Actif", validators= [DataRequired(message="Veuillez entrer si le membres est actif")])
 
-    submit = SubmitField("Enregistrer l equipement")
+    submit = SubmitField("Enregistrer le nouveau membre")
 
 
 class FormWTFUpdatemembres(FlaskForm):
