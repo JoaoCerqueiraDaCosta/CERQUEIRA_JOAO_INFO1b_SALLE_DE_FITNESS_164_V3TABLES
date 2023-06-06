@@ -17,7 +17,7 @@ class FormWTFAjoutermembres_avoir_coach(FlaskForm):
     """
     nom_genre_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
     FK_membres = StringField ("Prénom et Nom", validators= [DataRequired(message="Veuillez entrez le Prénom et le Nom")])
-    FK_coach = StringField ("Nom et Nom", validators= [DataRequired(message="Veuillez entrez le Prénom et le Nom")])
+    FK_coach = StringField ("Prénom et Nom", validators= [DataRequired(message="Veuillez entrez le Prénom et le Nom")])
 
     submit = SubmitField("Enregistrer le membre et le coach")
 
