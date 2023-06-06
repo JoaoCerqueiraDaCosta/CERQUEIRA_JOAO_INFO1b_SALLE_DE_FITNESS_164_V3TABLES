@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %} Afficher Membres {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+            <table class="table table-bordered table-sm">
+            {% if data %}
+                <thead>
+                    <tr>
+                        <th class="align-middle">
+                            id_membres
+                        </th>
+                        <th class="align-middle">
+                            nom
+                        </th>
+                        <th class="align-middle">
+							type
+                        </th>
+                        <th class="align-middle">
+							date_achat
+                        </th>
+						<th class="align-middle">
+							date_reparation
+                        </th>
+						<th class="align-middle">
+							disponible
+                        </th>
+                    </tr>
+                </thead>
+            {% endif %}
+
+            {% for row in data %}
+				<tbody>
+					<tr>
+					  	<th class="align-middle">
+						  {{ row.id_membres }}
+					 	 </th>
+					  	<th class="align-middle">
+						{{ row.prenom }}
+					 	 </th>
+					  	<th class="align-middle">
+						{{ row.nom }}
+					  	</th>
+					  	<th class="align-middle">
+						{{ row.date_naissance }}
+					  	</th>
+					  	<th class="align-middle">
+						{{ row.email }}
+					  	</th>
+					 	 <th class="align-middle">
+						{{ row.telephone }}
+					 	 </th>
+					  	<th class="align-middle">
+						{{ row.date_inscription }}
+					 	</th>
+					  	<th class="align-middle">
+						{{ row.actif }}
+					  	</th>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-primary" href="{{ url_for('membres_ajouter_wtf') }}" role="button">ADD</a>
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-warning" href="{{ url_for('membres_update_wtf', id_membres_btn_edit_html=row.id_membres) }}" role="button">Edit</a>
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-danger" href="{{ url_for('membres_delete_wtf', id_membres_btn_delete_html=row.id_membres) }}" role="button">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+            {% else %}
+				<tbody>
+					<tr>
+						<td>
+							Aucun equipement.
+						</td>
+						<td>
+							<a class="btn btn-primary" href="{{ url_for('membres_ajouter_wtf') }}" role="button">Ajouter</a>
+						</td>
+					</tr>
+				</tbody>
+            {% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %} Afficher Coach {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+            <table class="table table-bordered table-sm">
+            {% if data %}
+                <thead>
+                    <tr>
+                        <th class="align-middle">
+                            ID_coach
+                        </th>
+                        <th class="align-middle">
+                            prenom
+                        </th>
+                        <th class="align-middle">
+							nom
+                        </th>
+                        <th class="align-middle">
+							Specialiter_coach
+                        </th>
+                    </tr>
+                </thead>
+            {% endif %}
+
+            {% for row in data %}
+				<tbody>
+					<tr>
+						<td class="align-middle">
+							{{ row.ID_coach }}
+						</td>
+						<td class="align-middle">
+							{{ row.prenom }}
+						</td>
+						<td class="align-middle">
+							{{ row.nom }}
+						</td>
+						<td class="align-middle">
+							{{ row.Specialiter_coach }}
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-primary" href="{{ url_for('coach_ajouter_wtf') }}" role="button">ADD</a>
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-warning" href="{{ url_for('coach_update_wtf', id_coach_btn_edit_html=row.id_coach) }}" role="button">Edit</a>
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-danger" href="{{ url_for('coach_delete_wtf', id_coach_btn_delete_html=row.id_coach) }}" role="button">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+            {% else %}
+				<tbody>
+					<tr>
+						<td>
+							Aucun equipement.
+						</td>
+						<td>
+							<a class="btn btn-primary" href="{{ url_for('coach_ajouter_wtf') }}" role="button">Ajouter</a>
+						</td>
+					</tr>
+				</tbody>
+            {% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
