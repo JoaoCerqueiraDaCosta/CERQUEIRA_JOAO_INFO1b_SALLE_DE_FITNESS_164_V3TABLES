@@ -66,13 +66,13 @@ def equipements_afficher(order_by, id_equipements_sel):
 
 """
     Auteur : OM 2021.03.22
-    Définition d'une "route" /genres_ajouter
+    Définition d'une "route" /Equipements_ajouter
     
     Test : ex : http://127.0.0.1:5575/genres_ajouter
     
     Paramètres : sans
     
-    But : Ajouter un genre pour un film
+    But : Ajouter un Equipement
     
     Remarque :  Dans le champ "name_genre_html" du formulaire "genres/genres_ajouter.html",
                 le contrôle de la saisie s'effectue ici en Python.
@@ -106,11 +106,11 @@ def equipements_ajouter_wtf():
                 return redirect(url_for('equipements_afficher', order_by='DESC', id_equipements_sel=0))
 
         except Exception as Exception_equipements_ajouter_wtf:
-            raise ExceptionGenresAjouterWtf(f"fichier : {Path(__file__).name}  ;  "
+            raise Exception_equipements_ajouter_wtf(f"fichier : {Path(__file__).name}  ;  "
                                             f"{equipements_ajouter_wtf.__name__} ; "
                                             f"{Exception_equipements_ajouter_wtf}")
 
-    return render_template("equipements_ajouter_wtf.html", form=form)
+    return render_template("/equipements_ajouter_wtf.html", form=form)
 
 
 """
@@ -139,7 +139,7 @@ def equipements_update_wtf():
     id_equipements_update = request.values['id_equipements_btn_edit_html']
 
     # Objet formulaire pour l'UPDATE
-    form_update = FormWTFUpdateGenre()
+    form_update = FormWTFUpdateequipements()
     try:
         # 2023.05.14 OM S'il y a des listes déroulantes dans le formulaire
         # La validation pose quelques problèmes
@@ -237,12 +237,12 @@ def equipements_delete_wtf():
                 valeur_delete_dictionnaire = {"value_id_equipements": id_equipements_delete}
                 print("valeur_delete_dictionnaire ", valeur_delete_dictionnaire)
 
-                str_sql_delete_films_equipements = """DELETE FROM t_equipements WHERE fk_equipements = %(value_id_equipements)s"""
+                str_sql_delete_equipements = """DELETE FROM t_equipements WHERE fk_equipements = %(value_id_equipements)s"""
                 str_sql_delete_idequipements = """DELETE FROM t_equipements WHERE id_equipements = %(value_id_equipements)s"""
                 # Manière brutale d'effacer d'abord la "fk_genre", même si elle n'existe pas dans la "t_genre_film"
                 # Ensuite on peut effacer le genre vu qu'il n'est plus "lié" (INNODB) dans la "t_genre_film"
                 with DBconnection() as mconn_bd:
-                    mconn_bd.execute(str_sql_delete_films_equipements, valeur_delete_dictionnaire)
+                    mconn_bd.execute(str_sql_delete_equipements, valeur_delete_dictionnaire)
                     mconn_bd.execute(str_sql_delete_idequipements, valeur_delete_dictionnaire)
 
                 flash(f"equipements définitivement effacé !!", "success")
@@ -256,7 +256,7 @@ def equipements_delete_wtf():
             print(id_equipements_delete, type(id_equipements_delete))
 
             # Requête qui affiche tous les films_genres qui ont le genre que l'utilisateur veut effacer
-            str_sql_equipements_films_delete = """SELECT id_equipements, nom_film, id_equipements, intitule_equipements FROM t_equipements_film 
+            str_sql_equipements_delete = """SELECT id_equipements, nom_film, id_equipements, intitule_equipements FROM t_equipements_film 
                                             INNER JOIN t_film ON t_equipements.fk_film = t_film.id_film
                                             INNER JOIN t_equipements ON t_equipements_film.fk_equipements = t_equipements.id_equipements
                                             WHERE fk_equipements = %(value_id_equipements)s"""
