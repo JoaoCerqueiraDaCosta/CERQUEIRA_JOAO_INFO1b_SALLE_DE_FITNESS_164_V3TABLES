@@ -16,13 +16,12 @@ class FormWTFAjouterequipements(FlaskForm):
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
     nom_equipements_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
-    nom_equipements_wtf = StringField("Insérer l equipement ", validators=[Length(min=2, max=20, message="min 2 max 20"),
-                                                                   Regexp(nom_equipements_regexp,
-                                                                          message="Pas de chiffres, de caractères "
-                                                                                  "spéciaux, "
-                                                                                  "d'espace à double, de double "
-                                                                                  "apostrophe, de double trait union")
-                                                                   ])
+    nom_equipements = StringField ("Nom", validators= [DataRequired(message="Veuillez entrez le Nom")])
+    type_equipements = StringField ("Type", validators= [DataRequired(message="Veuillez entrez le Type")])
+    date_achat_equipements = DateField ("Date d'achat", validators= [DataRequired(message="Veuillez entrez la date d'achat")])
+    date_reparation_equipements = DateField ("Date de réparation", validators= [DataRequired(message="Veuillez entrez la date de réparation")])
+    disponible_equipements = StringField ("Disponible", validators= [DataRequired(message="Veuillez entrez la disponibilité")])
+
     submit = SubmitField("Enregistrer l equipement")
 
 

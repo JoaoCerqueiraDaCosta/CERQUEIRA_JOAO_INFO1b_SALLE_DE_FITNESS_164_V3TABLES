@@ -110,7 +110,7 @@ def equipements_ajouter_wtf():
                                             f"{equipements_ajouter_wtf.__name__} ; "
                                             f"{Exception_equipements_ajouter_wtf}")
 
-    return render_template("/equipements_ajouter_wtf.html", form=form)
+    return render_template("equipements/equipements_ajouter_wtf.html", form=form)
 
 
 """

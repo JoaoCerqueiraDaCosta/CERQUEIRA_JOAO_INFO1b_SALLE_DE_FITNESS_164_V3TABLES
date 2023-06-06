@@ -1,20 +1,34 @@
 {% extends "base.html" %}
-{% block title %} Ajouter un coach (WTF) {% endblock %}
+{% block title %} Ajouter un coach {% endblock %}
 {% block body %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<p>
-				Ajouter un nouveau coach (WTForms)
+				Ajouter un nouveau coach
 			</p>
 			<form action="" method="POST" novalidate>
 				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
 				{{ form.hidden_tag() }}
 				<div class="form-group">
 					<p>
-						{{ form.nom_coach_wtf.label }}<br>
-						{{ form.nom_coach_wtf(size=32) }}<br>
-						{% for error in form.nom_coach_wtf.errors %}
+						{{ form.prenom_coach.label }}<br>
+						{{ form.prenom_coach(size=32) }}<br>
+						{% for error in form.prenom_coach.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.nom_coach.label }}<br>
+						{{ form.nom_coach(size=32) }}<br>
+						{% for error in form.nom_coach.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.Specialiter_coach_coach.label }}<br>
+						{{ form.Specialiter_coach_coach(size=32) }}<br>
+						{% for error in form.Specialiter_coach_coach.errors %}
 							<span style="color: red;">[{{ error }}]</span>
 						{% endfor %}
 					</p>

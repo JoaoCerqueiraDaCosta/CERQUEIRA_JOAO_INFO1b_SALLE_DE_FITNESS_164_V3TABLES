@@ -90,12 +90,18 @@ def membres_ajouter_wtf():
     if request.method == "POST":
         try:
             if form.validate_on_submit():
-                name_membres_wtf = form.nom_membres_wtf.data
-                name_membres = name_membres_wtf.lower()
-                valeurs_insertion_dictionnaire = {"value_intitule_membres": name_membres}
+                prenom_membres = form.prenom_membres.data
+                nom_membres = form.nom_membres.data
+                date_naissance_membres = form.date_naissance_membres.data
+                email_membres = form.email_membres.data
+                telephone_membres = form.telephone_membres.data
+                date_inscription_membres = form.date_inscription_membres.data
+                actif_membres = int(form.actif_membres.data)
+
+                valeurs_insertion_dictionnaire = {"Prenom_membres": prenom_membres, "Nom_membres": nom_membres, "date_naissance_membres": date_naissance_membres, "email_membres": email_membres, "telephone_membres": telephone_membres, "date_inscription_membres": date_inscription_membres, "actif_membres": actif_membres}
                 print("valeurs_insertion_dictionnaire ", valeurs_insertion_dictionnaire)
 
-                strsql_insert_membres = """INSERT INTO t_membres (id_membres,intitule_membres) VALUES (NULL,%(value_intitule_membres)s) """
+                strsql_insert_membres = """INSERT INTO t_membres (prenom, nom, date_naissance, email, telephone, date_inscription, actif) VALUES (%(Prenom_membres)s, %(Nom_membres)s, %(date_naissance_membres)s, %(email_membres)s, %(telephone_membres)s, %(date_inscription_membres)s, %(actif_membres)s)"""
                 with DBconnection() as mconn_bd:
                     mconn_bd.execute(strsql_insert_membres, valeurs_insertion_dictionnaire)
 
@@ -110,7 +116,7 @@ def membres_ajouter_wtf():
                                             f"{membres_ajouter_wtf.__name__} ; "
                                             f"{Exception_membres_ajouter_wtf}")
 
-    return render_template("membres_ajouter_wtf.html", form=form)
+    return render_template("membres/membres_ajouter_wtf.html", form=form)
 
 
 """

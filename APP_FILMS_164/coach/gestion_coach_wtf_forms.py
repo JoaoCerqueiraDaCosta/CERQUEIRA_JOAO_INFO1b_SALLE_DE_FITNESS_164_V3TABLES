@@ -16,13 +16,11 @@ class FormWTFAjoutercoach(FlaskForm):
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
     nom_coach_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
-    nom_coach_wtf = StringField("Insérer l equipement ", validators=[Length(min=2, max=20, message="min 2 max 20"),
-                                                                   Regexp(nom_coach_regexp,
-                                                                          message="Pas de chiffres, de caractères "
-                                                                                  "spéciaux, "
-                                                                                  "d'espace à double, de double "
-                                                                                  "apostrophe, de double trait union")
-                                                                   ])
+    prenom_coach = StringField ("Prénom", validators= [DataRequired(message="Veuillez entrez le prénom")])
+    nom_coach = StringField ("Nom", validators= [DataRequired(message="Veuillez entrez le nom")])
+    Specialiter_coach_coach = StringField ("Spécialitée", validators= [DataRequired(message="Veuillez entrez la spécialitée du coach")])
+
+
     submit = SubmitField("Enregistrer l equipement")
 
 

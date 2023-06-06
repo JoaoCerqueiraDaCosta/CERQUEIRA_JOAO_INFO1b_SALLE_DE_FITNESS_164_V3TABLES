@@ -1,20 +1,62 @@
 {% extends "base.html" %}
-{% block title %} Ajouter un GENRE (WTF) {% endblock %}
+{% block title %} Ajouter un Membre {% endblock %}
 {% block body %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<p>
-				Ajouter un nouveau GENRE (WTForms)
+				Ajouter un nouveau Membre
 			</p>
 			<form action="" method="POST" novalidate>
 				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
 				{{ form.hidden_tag() }}
 				<div class="form-group">
 					<p>
-						{{ form.nom_genre_wtf.label }}<br>
-						{{ form.nom_genre_wtf(size=32) }}<br>
-						{% for error in form.nom_genre_wtf.errors %}
+						{{ form.prenom_membres.label }}<br>
+						{{ form.prenom_membres(size=32) }}<br>
+						{% for error in form.prenom_membres.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.nom_membres.label }}<br>
+						{{ form.nom_membres(size=32) }}<br>
+						{% for error in form.nom_membres.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.date_naissance_membres.label }}<br>
+						{{ form.date_naissance_membres(size=32) }}<br>
+						{% for error in form.date_naissance_membres.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.email_membres.label }}<br>
+						{{ form.email_membres(size=32) }}<br>
+						{% for error in form.email_membres.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.telephone_membres.label }}<br>
+						{{ form.telephone_membres(size=32) }}<br>
+						{% for error in form.telephone_membres.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.date_inscription_membres.label }}<br>
+						{{ form.date_inscription_membres(size=32) }}<br>
+						{% for error in form.date_inscription_membres.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.actif_membres.label }}<br>
+						{{ form.actif_membres(size=32) }}<br>
+						{% for error in form.actif_membres.errors %}
 							<span style="color: red;">[{{ error }}]</span>
 						{% endfor %}
 					</p>

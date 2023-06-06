@@ -16,13 +16,14 @@ class FormWTFAjoutermembres(FlaskForm):
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
     nom_equipements_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
-    nom_equipements_wtf = StringField("Insérer l equipement ", validators=[Length(min=2, max=20, message="min 2 max 20"),
-                                                                   Regexp(nom_equipements_regexp,
-                                                                          message="Pas de chiffres, de caractères "
-                                                                                  "spéciaux, "
-                                                                                  "d'espace à double, de double "
-                                                                                  "apostrophe, de double trait union")
-                                                                   ])
+    prenom_membres = StringField ("Prénom", validators= [DataRequired(message="Veuillez entrez le Prénom")])
+    nom_membres = StringField ("Nom", validators= [DataRequired(message="Veuillez entrez le Nom")])
+    date_naissance_membres = DateField ("Date de Naissance", validators= [DataRequired(message="Veuillez entrez une date")])
+    email_membres = StringField ("Email", validators= [DataRequired(message="Veuillez entrez l'email")])
+    telephone_membres = StringField ("Téléphone", validators= [DataRequired(message="Veuillez entrez le numéro de téléphone")])
+    date_inscription_membres = DateField ("Date d'inscription", validators= [DataRequired(message="Veuillez entrez la date d'inscription")])
+    actif_membres = StringField ("Actif", validators= [DataRequired(message="Veuillez entrez si le membres est actif")])
+
     submit = SubmitField("Enregistrer l equipement")
 
 

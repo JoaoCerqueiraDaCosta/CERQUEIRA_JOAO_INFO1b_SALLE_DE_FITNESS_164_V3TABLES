@@ -12,9 +12,9 @@ from flask import url_for
 from APP_FILMS_164 import app
 from APP_FILMS_164.database.database_tools import DBconnection
 from APP_FILMS_164.erreurs.exceptions import *
-from APP_FILMS_164.membres_avoir_coach.gestion_membres_avoir_coach_wtf_forms import FormWTFAjouterGenres
-from APP_FILMS_164.membres_avoir_coach.gestion_membres_avoir_coach_wtf_forms import FormWTFDeleteGenre
-from APP_FILMS_164.membres_avoir_coach.gestion_membres_avoir_coach_wtf_forms import FormWTFUpdateGenre
+from APP_FILMS_164.membres_avoir_coach.gestion_membres_avoir_coach_wtf_forms import FormWTFAjoutermembres_avoir_coach
+from APP_FILMS_164.membres_avoir_coach.gestion_membres_avoir_coach_wtf_forms import FormWTFDeletemembres_avoir_coach
+from APP_FILMS_164.membres_avoir_coach.gestion_membres_avoir_coach_wtf_forms import FormWTFUpdatemembres_avoir_coach
 
 """
     Auteur : OM 2021.03.16
@@ -92,7 +92,7 @@ INNER JOIN t_membres ON t_membres.id_membres = t_membres_avoir_coach.fk_membres"
 
 @app.route("/membres_avoir_coach_ajouter", methods=['GET', 'POST'])
 def membres_avoir_coach_ajouter_wtf():
-    form = FormWTFAjouterGenres()
+    form = FormWTFAjoutermembres_avoir_coach()
     if request.method == "POST":
         try:
             if form.validate_on_submit():

@@ -1,20 +1,27 @@
 {% extends "base.html" %}
-{% block title %} Ajouter un GENRE (WTF) {% endblock %}
+{% block title %} Ajouter un coach et un membre  {% endblock %}
 {% block body %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<p>
-				Ajouter un nouveau GENRE (WTForms)
+				Ajouter un coach et un membre
 			</p>
 			<form action="" method="POST" novalidate>
 				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
 				{{ form.hidden_tag() }}
 				<div class="form-group">
 					<p>
-						{{ form.nom_genre_wtf.label }}<br>
-						{{ form.nom_genre_wtf(size=32) }}<br>
-						{% for error in form.nom_genre_wtf.errors %}
+						{{ form.FK_membres.label }}<br>
+						{{ form.FK_membres(size=32) }}<br>
+						{% for error in form.FK_membres.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.FK_coach.label }}<br>
+						{{ form.FK_coach(size=32) }}<br>
+						{% for error in form.FK_coach.errors %}
 							<span style="color: red;">[{{ error }}]</span>
 						{% endfor %}
 					</p>

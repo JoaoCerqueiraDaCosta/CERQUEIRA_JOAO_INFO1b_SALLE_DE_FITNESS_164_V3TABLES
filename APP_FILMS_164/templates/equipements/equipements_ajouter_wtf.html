@@ -1,23 +1,52 @@
 {% extends "base.html" %}
-{% block title %} Ajouter un Equipement (WTF) {% endblock %}
+{% block title %} Ajouter un Equipement {% endblock %}
 {% block body %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<p>
-				Ajouter un nouvel Equipement (WTForms)
+				Ajouter un nouvel Equipement
 			</p>
 			<form action="" method="POST" novalidate>
 				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
 				{{ form.hidden_tag() }}
 				<div class="form-group">
 					<p>
-						{{ form.Equipements_wtf.label }}<br>
-						{{ form.Equipements_wtf(size=32) }}<br>
-						{% for error in form.Equipements_wtf.errors %}
+						{{ form.nom_equipements.label }}<br>
+						{{ form.nom_equipements(size=32) }}<br>
+						{% for error in form.nom_equipements.errors %}
 							<span style="color: red;">[{{ error }}]</span>
 						{% endfor %}
 					</p>
+					<p>
+						{{ form.type_equipements.label }}<br>
+						{{ form.type_equipements(size=32) }}<br>
+						{% for error in form.type_equipements.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.date_achat_equipements.label }}<br>
+						{{ form.date_achat_equipements(size=32) }}<br>
+						{% for error in form.date_achat_equipements.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.date_reparation_equipements.label }}<br>
+						{{ form.date_reparation_equipements(size=32) }}<br>
+						{% for error in form.date_reparation_equipements.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form.disponible_equipements.label }}<br>
+						{{ form.disponible_equipements(size=32) }}<br>
+						{% for error in form.disponible_equipements.errors %}
+							<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+
 				</div>
 				{{ form.submit(class="btn btn-primary") }}
 			</form>

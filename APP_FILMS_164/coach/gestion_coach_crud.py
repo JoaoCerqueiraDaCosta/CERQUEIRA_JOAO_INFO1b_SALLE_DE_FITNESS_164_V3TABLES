@@ -110,7 +110,7 @@ def coach_ajouter_wtf():
                                             f"{coach_ajouter_wtf.__name__} ; "
                                             f"{Exception_coach_ajouter_wtf}")
 
-    return render_template("/coach_ajouter_wtf.html", form=form)
+    return render_template("coach/coach_ajouter_wtf.html", form=form)
 
 
 """

@@ -1,21 +1,3 @@
--- OM 2021.02.17
--- FICHIER MYSQL POUR FAIRE FONCTIONNER LES EXEMPLES
--- DE REQUETES MYSQL
--- Database: MACCAUD_OLIVIER_INFO1X_FILMS_164_2023
-
--- Destruction de la BD si elle existe.
--- Pour être certain d'avoir la dernière version des données
-
-DROP DATABASE IF EXISTS fit;
-
--- Création d'un nouvelle base de donnée
-
-CREATE DATABASE IF NOT EXISTS fit;
-
--- Utilisation de cette base de donnée
-
-USE fit;
--- --------------------------------------------------------
 -- --------------------------------------------------------
 -- Hôte:                         127.0.0.1
 -- Version du serveur:           8.0.32 - MySQL Community Server - GPL
@@ -32,6 +14,7 @@ USE fit;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+DROP DATABASE IF EXIST "fit";
 
 -- Listage de la structure de la base pour fit
 CREATE DATABASE IF NOT EXISTS `fit` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
@@ -73,7 +56,7 @@ INSERT INTO `t_coach` (`ID_coach`, `prenom`, `nom`,`Specialiter_coach`) VALUES
 
 -- Listage de la structure de table fit. t_equipements
 CREATE TABLE IF NOT EXISTS `t_equipements` (
-  `id_equipements` int NOT NULL,
+  `id_equipements` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) DEFAULT NULL,
   `type` varchar(50) DEFAULT NULL,
   `date_achat` date DEFAULT NULL,
@@ -97,7 +80,7 @@ INSERT INTO `t_equipements` (`id_equipements`, `nom`, `type`, `date_achat`, `dat
 
 -- Listage de la structure de table fit. t_membres
 CREATE TABLE IF NOT EXISTS `t_membres` (
-  `id_membres` int NOT NULL,
+  `id_membres` int NOT NULL AUTO_INCREMENT,
   `prenom` varchar(50) DEFAULT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `date_naissance` date DEFAULT NULL,
@@ -123,7 +106,7 @@ INSERT INTO `t_membres` (`id_membres`, `prenom`, `nom`, `date_naissance`, `email
 
 -- Listage de la structure de table fit. t_salle_de_fitness
 CREATE TABLE IF NOT EXISTS `t_salle_de_fitness` (
-  `id_salle_de_fitness` int NOT NULL,
+  `id_salle_de_fitness` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) DEFAULT NULL,
   `adresse` varchar(100) DEFAULT NULL,
   `telephone` varchar(20) DEFAULT NULL,
@@ -135,3 +118,9 @@ CREATE TABLE IF NOT EXISTS `t_salle_de_fitness` (
 -- Listage des données de la table fit.t_salle_de_fitness : ~1 rows (environ)
 INSERT INTO `t_salle_de_fitness` (`id_salle_de_fitness`, `nom`, `adresse`, `telephone`, `email`, `capacite_max`) VALUES
 	(1, 'FitForm', '15 rue des Sports, 75001 Paris', '0144556677', 'contact@fitform.com', 50);
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
