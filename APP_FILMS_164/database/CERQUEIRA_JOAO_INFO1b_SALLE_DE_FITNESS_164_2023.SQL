@@ -1,27 +1,8 @@
 DROP DATABASE IF EXISTS `fit`;
 
 -- Listage de la structure de la base pour fit
-CREATE DATABASE IF NOT EXISTS `fit`;
+CREATE DATABASE IF NOT EXISTS `fit` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `fit`;
-
--- Listage de la structure de table fit. t_avoir_coach
-CREATE TABLE IF NOT EXISTS `t_membres_avoir_coach` (
-  `ID_membres_avoir_coach` int NOT NULL AUTO_INCREMENT,
-  `fk_membres` int DEFAULT NULL,
-  `fk_coach` int DEFAULT NULL,
-  PRIMARY KEY (`ID_membres_avoir_coach`),
-  KEY `Index 2` (`fk_coach`,`fk_membres`),
-  KEY `FK_t_avoir_coach_t_membres` (`fk_membres`),
-  CONSTRAINT `FK_t_avoir_coach_t_coach` FOREIGN KEY (`fk_coach`) REFERENCES `t_coach` (`ID_coach`),
-  CONSTRAINT `FK_t_avoir_coach_t_membres` FOREIGN KEY (`fk_membres`) REFERENCES `t_membres` (`id_membres`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Listage des données de la table fit.t_avoir_coach : ~4 rows (environ)
-INSERT INTO `t_membres_avoir_coach` (`ID_membres_avoir_coach`, `fk_membres`, `fk_coach`) VALUES
-	(2, 4, 1),
-	(3, 2, 2),
-	(1, 5, 3),
-	(4, 7, 3);
 
 -- Listage de la structure de table fit. t_coach
 CREATE TABLE IF NOT EXISTS `t_coach` (
@@ -37,30 +18,6 @@ INSERT INTO `t_coach` (`ID_coach`, `prenom`, `nom`,`Specialiter_coach`) VALUES
 	(1, 'Jean', 'Dupont','endurance'),
 	(2, 'Marie', 'Martin', 'Haut du corps'),
 	(3, 'Luc', 'Dubois', 'Bas du corps');
-
--- Listage de la structure de table fit. t_equipements
-CREATE TABLE IF NOT EXISTS `t_equipements` (
-  `id_equipements` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) DEFAULT NULL,
-  `type` varchar(50) DEFAULT NULL,
-  `date_achat` date DEFAULT NULL,
-  `date_reparation` date DEFAULT NULL,
-  `disponible` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id_equipements`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Listage des données de la table fit.t_equipements : ~10 rows (environ)
-INSERT INTO `t_equipements` (`id_equipements`, `nom`, `type`, `date_achat`, `date_reparation`, `disponible`) VALUES
-	(1, 'Tapis de course', 'Cardio', '2020-01-01', '2025-01-01', 1),
-	(2, 'Vélo elliptique', 'Cardio', '2019-07-15', '2024-07-15', 1),
-	(3, 'Rameur', 'Cardio', '2021-04-20', '2026-04-20', 1),
-	(4, 'Haltères', 'Musculation', '2018-12-10', '2023-12-10', 1),
-	(5, 'Banc de musculation', 'Musculation', '2019-09-01', '2024-09-01', 1),
-	(6, 'Machine à abdominaux', 'Musculation', '2020-03-05', '2025-03-05', 1),
-	(7, 'Poulie haute', 'Musculation', '2021-02-10', '2026-02-10', 1),
-	(8, 'Balle de stabilité', 'Accessoire', '2019-11-23', '2024-11-23', 1),
-	(9, 'Corde à sauter', 'Accessoire', '2020-07-12', '2025-07-12', 1),
-	(10, 'Yoga mat', 'Accessoire', '2021-03-30', '2026-03-30', 1);
 
 -- Listage de la structure de table fit. t_membres
 CREATE TABLE IF NOT EXISTS `t_membres` (
@@ -87,6 +44,49 @@ INSERT INTO `t_membres` (`id_membres`, `prenom`, `nom`, `date_naissance`, `email
 	(8, 'Charlotte', 'Pierre', '1996-09-11', 'charlotte.pierre@mail.com', '+41 79 890 12 34', '2021-07-07', 1),
 	(9, 'Nicolas', 'Berger', '1988-06-08', 'nicolas.berger@mail.com', '+41 78 345 67 89', '2020-12-23', 1),
 	(10, 'Julie', 'Rousseau', '1991-03-25', 'julie.rousseau@mail.com', '+41 76 901 23 45', '2022-01-10', 1);
+
+-- Listage de la structure de table fit. t_avoir_coach
+CREATE TABLE IF NOT EXISTS `t_membres_avoir_coach` (
+  `ID_membres_avoir_coach` int NOT NULL AUTO_INCREMENT,
+  `fk_membres` int DEFAULT NULL,
+  `fk_coach` int DEFAULT NULL,
+  PRIMARY KEY (`ID_membres_avoir_coach`),
+  KEY `Index 2` (`fk_coach`,`fk_membres`),
+  KEY `FK_t_avoir_coach_t_membres` (`fk_membres`),
+  CONSTRAINT `FK_t_avoir_coach_t_coach` FOREIGN KEY (`fk_coach`) REFERENCES `t_coach` (`ID_coach`),
+  CONSTRAINT `FK_t_avoir_coach_t_membres` FOREIGN KEY (`fk_membres`) REFERENCES `t_membres` (`id_membres`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table fit.t_avoir_coach : ~4 rows (environ)
+INSERT INTO `t_membres_avoir_coach` (`ID_membres_avoir_coach`, `fk_membres`, `fk_coach`) VALUES
+	(2, 4, 1),
+	(3, 2, 2),
+	(1, 5, 3),
+	(4, 7, 3);
+
+-- Listage de la structure de table fit. t_equipements
+CREATE TABLE IF NOT EXISTS `t_equipements` (
+  `id_equipements` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `date_achat` date DEFAULT NULL,
+  `date_reparation` date DEFAULT NULL,
+  `disponible` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id_equipements`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table fit.t_equipements : ~10 rows (environ)
+INSERT INTO `t_equipements` (`id_equipements`, `nom`, `type`, `date_achat`, `date_reparation`, `disponible`) VALUES
+	(1, 'Tapis de course', 'Cardio', '2020-01-01', '2025-01-01', 1),
+	(2, 'Vélo elliptique', 'Cardio', '2019-07-15', '2024-07-15', 1),
+	(3, 'Rameur', 'Cardio', '2021-04-20', '2026-04-20', 1),
+	(4, 'Haltères', 'Musculation', '2018-12-10', '2023-12-10', 1),
+	(5, 'Banc de musculation', 'Musculation', '2019-09-01', '2024-09-01', 1),
+	(6, 'Machine à abdominaux', 'Musculation', '2020-03-05', '2025-03-05', 1),
+	(7, 'Poulie haute', 'Musculation', '2021-02-10', '2026-02-10', 1),
+	(8, 'Balle de stabilité', 'Accessoire', '2019-11-23', '2024-11-23', 1),
+	(9, 'Corde à sauter', 'Accessoire', '2020-07-12', '2025-07-12', 1),
+	(10, 'Yoga mat', 'Accessoire', '2021-03-30', '2026-03-30', 1);
 
 -- Listage de la structure de table fit. t_salle_de_fitness
 CREATE TABLE IF NOT EXISTS `t_salle_de_fitness` (
