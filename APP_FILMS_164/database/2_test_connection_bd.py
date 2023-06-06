@@ -9,10 +9,10 @@ try:
     """
         Une seule requête pour montrer la récupération des données de la BD en MySql.
     """
-    strsql_genres_afficher = """SELECT * FROM t_coach"""
+    strsql_coach_afficher = """SELECT * FROM t_coach"""
 
     with DBconnection() as db:
-        db.execute(strsql_genres_afficher)
+        db.execute(strsql_coach_afficher)
         result = db.fetchall()
         print("data_genres ", result, " Type : ", type(result))
 

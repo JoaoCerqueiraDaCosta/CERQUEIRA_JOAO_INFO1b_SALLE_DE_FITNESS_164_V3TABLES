@@ -51,6 +51,10 @@ try:
     from APP_FILMS_164.films import gestion_films_wtf_forms
     from APP_FILMS_164.equipements import gestion_equipements_crud
     from APP_FILMS_164.membres_avoir_coach import  gestion_membres_avoir_coach_crud
+    from APP_FILMS_164.membres import gestion_membres_crud
+    from APP_FILMS_164.membres import gestion_membres_wtf_forms
+    from APP_FILMS_164.coach import gestion_coach_crud
+    from APP_FILMS_164.coach import gestion_coach_wtf_forms
 
 except Exception as Exception_init_app_films_164:
     print(f"4567756434 Une erreur est survenue {type(Exception_init_app_films_164)} dans"
