@@ -26,7 +26,7 @@ class FormWTFAjouterGenres(FlaskForm):
     submit = SubmitField("Enregistrer le coach")
 
 
-class FormWTFUpdateGenre(FlaskForm):
+class FormWTFUpdateMembres(FlaskForm):
     """
         Dans le formulaire "genre_update_wtf.html" on impose que le champ soit rempli.
         Définition d'un "bouton" submit avec un libellé personnalisé.

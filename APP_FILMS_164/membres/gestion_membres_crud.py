@@ -14,7 +14,7 @@ from APP_FILMS_164.database.database_tools import DBconnection
 from APP_FILMS_164.erreurs.exceptions import *
 from APP_FILMS_164.membres.gestion_membres_wtf_forms import FormWTFAjoutermembres
 from APP_FILMS_164.membres.gestion_membres_wtf_forms import FormWTFDeletemembres
-from APP_FILMS_164.membres.gestion_membres_wtf_forms import FormWTFUpdatemembres
+from APP_FILMS_164.membres.gestion_membres_wtf_forms import FormWTFUpdateMembres
 
 """
     Auteur : OM 2021.03.16
@@ -145,27 +145,27 @@ def membres_update_wtf():
     id_membres_update = request.values['id_membres_btn_edit_html']
 
     # Objet formulaire pour l'UPDATE
-    form_update = FormWTFUpdateGenre()
+    form_update = FormWTFUpdateMembres()
     try:
         # 2023.05.14 OM S'il y a des listes déroulantes dans le formulaire
         # La validation pose quelques problèmes
         if request.method == "POST" and form_update.submit.data:
             # Récupèrer la valeur du champ depuis "genre_update_wtf.html" après avoir cliqué sur "SUBMIT".
             # Puis la convertir en lettres minuscules.
-            name_membres_update = form_update.nom_membres_update_wtf.data
-            name_membres_update = name_membres_update.lower()
-            date_membres_essai = form_update.date_membres_wtf_essai.data
+            prenom_membres = form_update.prenom_membres_update.data
+            nom_membres = form_update.nom_membres_update.data
+            date_naissance_membres = form_update.date_naissance_membres_update.data
+            email_membres = form_update.email_membres_update.data
+            telephone_membres = form_update.telephone_membres_update.data
+            date_inscription_membres = form_update.date_inscription_membres_update.data
+            actif_membres = int(form_update.actif_membres_update.data)
 
-            valeur_update_dictionnaire = {"value_id_membres": id_membres_update,
-                                          "value_name_membres": name_membres_update,
-                                          "value_date_membres_essai": date_membres_essai
-                                          }
+            valeur_update_dictionnaire = {"Prenom_membres": prenom_membres, "Nom_membres": nom_membres, "date_naissance_membres": date_naissance_membres, "email_membres": email_membres, "telephone_membres": telephone_membres, "date_inscription_membres": date_inscription_membres, "actif_membres": actif_membres}
             print("valeur_update_dictionnaire ", valeur_update_dictionnaire)
 
-            str_sql_update_intitulemembres = """UPDATE t_membres SET intitule_membres = %(value_name_membres)s, 
-            date_ins_membres = %(value_date_membres_essai)s WHERE id_membres = %(value_id_membres)s """
+            str_sql_update_membres = """UPDATE t_membres SET prenom_membres = %(Prenom_membres)s,  nom_membres = %(Nom_membres)s,  date_naissance_membres = %(date_naissance_membres)s,  email_membres = %(email_membres)s,  telephone_membres = %(telephone_membres)s,  date_inscription_membres = %(date_inscription_membres)s,  actif_membres = %(actif_membres)s"""
             with DBconnection() as mconn_bd:
-                mconn_bd.execute(str_sql_update_intitulemembres, valeur_update_dictionnaire)
+                mconn_bd.execute(str_sql_update_membres, valeur_update_dictionnaire)
 
             flash(f"Donnée mise à jour !!", "success")
             print(f"Donnée mise à jour !!")
@@ -181,13 +181,17 @@ def membres_update_wtf():
             with DBconnection() as mybd_conn:
                 mybd_conn.execute(str_sql_id_membres, valeur_select_dictionnaire)
             # Une seule valeur est suffisante "fetchone()", vu qu'il n'y a qu'un seul champ "nom genre" pour l'UPDATE
-            data_nom_membres = mybd_conn.fetchone()
-            print("data_nom_membres ", data_nom_membres, " type ", type(data_nom_membres), " membres ",
-                  data_nom_membres["intitule_membres"])
+            data_membre = mybd_conn.fetchone()
+            print("data_membre ", data_membre, " type ", type(data_membre), " genre ", data_membre["prenom_membres"])
 
             # Afficher la valeur sélectionnée dans les champs du formulaire "genre_update_wtf.html"
-            form_update.nom_membres_update_wtf.data = data_nom_membres["intitule_membres"]
-            form_update.date_membres_wtf_essai.data = data_nom_membres["date_ins_membres"]
+            form_update.prenom_membres_update.data = data_membre["prenom_membres"]
+            form_update.nom_membres_update.data = data_membre["nom_membres"]
+            form_update.date_naissance_membres_update.data = data_membre["date_naissance_membres"]
+            form_update.email_membres_update.data = data_membre["email_membres"]
+            form_update.telephone_membres_update.data = data_membre["telephone_membres"]
+            form_update.date_inscription_membres_update.data = data_membre["date_inscription_membres"]
+            form_update.actif_membres_update.data = data_membre["actif_membres"]
 
     except Exception as Exception_membres_update_wtf:
         raise ExceptionGenreUpdateWtf(f"fichier : {Path(__file__).name}  ;  "
@@ -282,12 +286,12 @@ def membres_delete_wtf():
                 mydb_conn.execute(str_sql_id_membres, valeur_select_dictionnaire)
                 # Une seule valeur est suffisante "fetchone()",
                 # vu qu'il n'y a qu'un seul champ "nom genre" pour l'action DELETE
-                data_nom_membres = mydb_conn.fetchone()
-                print("data_nom_membres ", data_nom_membres, " type ", type(data_nom_membres), " membres ",
-                      data_nom_membres["intitule_membres"])
+                data_membre = mydb_conn.fetchone()
+                print("data_membre ", data_membre, " type ", type(data_membre), " membres ",
+                      data_membre["intitule_membres"])
 
             # Afficher la valeur sélectionnée dans le champ du formulaire "genre_delete_wtf.html"
-            form_delete.nom_membres_delete_wtf.data = data_nom_membres["intitule_membres"]
+            form_delete.nom_membres_delete_wtf.data = data_membre["intitule_membres"]
 
             # Le bouton pour l'action "DELETE" dans le form. "genre_delete_wtf.html" est caché.
             btn_submit_del = False

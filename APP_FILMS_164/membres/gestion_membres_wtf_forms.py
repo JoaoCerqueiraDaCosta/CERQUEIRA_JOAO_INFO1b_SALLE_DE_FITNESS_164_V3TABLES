@@ -27,23 +27,22 @@ class FormWTFAjoutermembres(FlaskForm):
     submit = SubmitField("Enregistrer le nouveau membre")
 
 
-class FormWTFUpdatemembres(FlaskForm):
+class FormWTFUpdateMembres(FlaskForm):
     """
         Dans le formulaire "genre_update_wtf.html" on impose que le champ soit rempli.
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
-    nom_equipements_update_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
-    nom_equipements_update_wtf = StringField("Insérer l equipements ", validators=[Length(min=2, max=20, message="min 2 max 20"),
-                                                                          Regexp(nom_equipements_update_regexp,
-                                                                                 message="Pas de chiffres, de "
-                                                                                         "caractères "
-                                                                                         "spéciaux, "
-                                                                                         "d'espace à double, de double "
-                                                                                         "apostrophe, de double trait "
-                                                                                         "union")
-                                                                          ])
-    date_equipements_wtf_essai = DateField("Essai date", validators=[InputRequired("Date obligatoire"),
-                                                               DataRequired("Date non valide")])
+    nom_equipements_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
+    prenom_membres_update = StringField("Prénom", validators=[DataRequired(message="Veuillez entrer le Prénom")])
+    nom_membres_update  = StringField("Nom", validators=[DataRequired(message="Veuillez entrer le Nom")])
+    date_naissance_membres_update  = DateField("Date de Naissance", validators=[DataRequired(message="Veuillez entrer une date")])
+    email_membres_update  = StringField("Email", validators=[DataRequired(message="Veuillez entrer l'email")])
+    telephone_membres_update  = StringField("Téléphone",
+                                    validators=[DataRequired(message="Veuillez entrer le numéro de téléphone")])
+    date_inscription_membres_update  = DateField("Date d'inscription",
+                                         validators=[DataRequired(message="Veuiller entrez la date d'inscription")])
+    actif_membres_update  = StringField("Actif", validators=[DataRequired(message="Veuillez entrer si le membres est actif")])
+
     submit = SubmitField("Update l equipements")
 
 
