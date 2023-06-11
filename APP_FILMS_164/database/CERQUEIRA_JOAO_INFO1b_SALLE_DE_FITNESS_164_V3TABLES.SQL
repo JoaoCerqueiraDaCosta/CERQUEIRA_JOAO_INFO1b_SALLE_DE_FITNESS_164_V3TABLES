@@ -87,18 +87,3 @@ INSERT INTO `t_equipements` (`id_equipements`, `nom`, `type`, `date_achat`, `dat
 	(8, 'Balle de stabilité', 'Accessoire', '2019-11-23', '2024-11-23', 1),
 	(9, 'Corde à sauter', 'Accessoire', '2020-07-12', '2025-07-12', 1),
 	(10, 'Yoga mat', 'Accessoire', '2021-03-30', '2026-03-30', 1);
-
--- Listage de la structure de table fit. t_salle_de_fitness
-CREATE TABLE IF NOT EXISTS `t_salle_de_fitness` (
-  `id_salle_de_fitness` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) DEFAULT NULL,
-  `adresse` varchar(100) DEFAULT NULL,
-  `telephone` varchar(20) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `capacite_max` int DEFAULT NULL,
-  PRIMARY KEY (`id_salle_de_fitness`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Listage des données de la table fit.t_salle_de_fitness : ~1 rows (environ)
-INSERT INTO `t_salle_de_fitness` (`id_salle_de_fitness`, `nom`, `adresse`, `telephone`, `email`, `capacite_max`) VALUES
-	(1, 'FitForm', '15 rue des Sports, 75001 Paris', '0144556677', 'contact@fitform.com', 50);
