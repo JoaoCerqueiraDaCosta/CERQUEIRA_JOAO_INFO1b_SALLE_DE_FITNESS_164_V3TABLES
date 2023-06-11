@@ -1,34 +1,35 @@
-Faire fonctionner la base de donnée :
+Voici une version améliorée du texte :
 
-1. Installer un serveur MySql
-(Laragon).
+Pour faire fonctionner la base de données, suivez ces étapes :
 
-2. Lancer le serveur MySql
-Lancer le serveur Laragon
+Installation du serveur MySQL (Laragon).
 
-3. Importer le projet
-Se rendre sur le lien gitHub et cloner le projet avec le lien HTTPS ensuite, aller sur PyCharm et cliquer sur get from VCS, coller le lien HTTPS puis cloner.
+Lancement du serveur MySQL et de Laragon.
 
-4. Importer la Base de données
-Dans le répertoire racine du projet, ouvrir le fichier "ImportationDumpSql.py" et faire un "run".
-En cas d'erreurs lors de l'importation, ouvrir le fichier ".env" à la racine du projet, contrôler les indications de connexion pour la bd.
+Importation du projet :
+a. Rendez-vous sur le lien GitHub et clonez le projet en utilisant le lien HTTPS.
+b. Ouvrez PyCharm, cliquez sur "Get from VCS", collez le lien HTTPS et clonez le projet.
 
-5. Lancer la requête pour montrer la récupération des données de la BD en MySql.
-2_test_connection_bd.py
+Importation de la base de données :
+a. Dans le répertoire racine du projet, ouvrez le fichier "ImportationDumpSql.py" et exécutez-le.
+b. Si des erreurs surviennent lors de l'importation, ouvrez le fichier ".env" à la racine du projet et vérifiez les informations de connexion à la base de données.
 
-6. Lancer le serveur flask et accéder à l'interface utilisateur
-Dans le terminal cliquer sur le lien généré lors de l'éxécution du fichier "run_mon_app.py".
+Exécution de la requête pour afficher les données de la base de données MySQL.
+Utilisez le fichier "2_test_connection_bd.py".
 
-7. Accéder à l'interface utilisateur
+Lancement du serveur Flask et accès à l'interface utilisateur :
+Dans le terminal, cliquez sur le lien généré lors de l'exécution du fichier "run_mon_app.py".
 
-8. Edition
-Vous pouvez maintenant entrer, modifier et supprimer des données à volonté.
+Accès à l'interface utilisateur.
 
-INFOS
-En cas de problème lors du login veuillez saisir l'url : http://127.0.0.1:5005/homepage
+Édition :
+Vous pouvez maintenant entrer, modifier et supprimer des données selon vos besoins.
 
-CONSEILS
-En cas d'erreurs vérifier la version de python dans l'interpreter.
+INFORMATIONS :
+Si vous rencontrez des problèmes lors de la connexion, veuillez utiliser l'URL suivante : http://127.0.0.1:5005/homepage.
 
-Redémarrer le serveur MySql.
-En cas d'erreurs: ouvrir le fichier ".env" à la racine du projet, contrôler les indications de connexion pour la bd.
+CONSEILS :
+
+Vérifiez la version de Python dans l'interpréteur en cas d'erreurs.
+Redémarrez le serveur MySQL si nécessaire.
+En cas d'erreurs persistantes, vérifiez les informations de connexion à la base de données dans le fichier ".env" à la racine du projet.
