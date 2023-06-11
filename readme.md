@@ -1,5 +1,3 @@
-Voici une version améliorée du texte :
-
 Pour faire fonctionner la base de données, suivez ces étapes :
 
 Installation du serveur MySQL (Laragon).
